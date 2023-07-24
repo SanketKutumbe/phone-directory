@@ -17,19 +17,29 @@ Build project (Windows/Linux):
 
 Testing api (E.g postman): (Header field includes content-type as application/json)
 1) Addition of a contact:
-     ![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/2816d184-9f5e-498d-9c5c-ff45216bc071)
 
-2) Modify/Updating contact:
-   ![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/537c0f02-52eb-4729-87b1-378dac9ee9cf)
+   ![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/ea7609dc-355f-4912-8019-f1e32a6ee3bd)
 
-3) Deleting a contact:
-    ![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/d0869597-efd9-42fe-8809-7199e939f4cb)
 
-4) Retrieving all contacts:
-   ![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/25856333-5cfe-438b-939b-29934a840964)
+3) Modify/Updating contact:
 
-5) Searching contacts by name:
-   ![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/e04d1c51-c6db-47a7-bab5-72989d0528db)
+   ![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/acadf30f-cc5f-46c4-87ec-6370bcdea79e)
+
+
+4) Deleting a contact:
+
+   ![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/19206342-71cc-447b-be07-9f536a5cdf8d)
+
+
+5) Retrieving all contacts:
+
+   ![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/9878ee48-0d11-4596-8c8c-f612359b89f8)
+
+
+7) Searching contacts by name:
+
+   ![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/a02d7799-ac7f-4a90-9ab1-fdb919ef9d50)
+
 
 
 
