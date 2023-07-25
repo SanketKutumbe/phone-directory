@@ -88,7 +88,7 @@ It provides api to add, modify, delete, search and retrieval of all contacts. Co
 
 1) Execute (in cmd or powershell or Terminal): "mvn clean install" to build package. Executable jar can be found inside target folder.
 2) To start application, execute: "java -jar phone-directory.jar".
-3) To run tests, execute: "mvn test -Dtest=ContactControllerTest".
+3) To run tests, execute: "mvn test -Dtest=ContactControllerTest". Using "#" followed by method name for specific test case.
 4) Apis can be tested using tools like Postman, with "localhost:8080/contacts"
 
 <h3> Testing api (E.g postman): (Header field includes content-type as application/json) </h3>
