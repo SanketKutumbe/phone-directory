@@ -3,8 +3,7 @@ It provides api to add, modify, delete, search and retrieval of all contacts. Co
 
 # Project Architecture Flow:
 
-![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/f639cee5-317b-4571-a1b4-feb8b75ed45c)
-
+![phone-directory drawio](https://github.com/SanketKutumbe/phone-directory/assets/30076041/b2b4451e-eba7-40c5-ab67-01f6daa0fd2b)
 
 <h2> Project Setup </h2>
 For Windows:
