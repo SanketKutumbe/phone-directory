@@ -38,7 +38,7 @@ Testing api (E.g postman): (Header field includes content-type as application/js
 
 7) Searching contacts by name:
 
-   ![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/a02d7799-ac7f-4a90-9ab1-fdb919ef9d50)
+   ![image](https://github.com/SanketKutumbe/magic-dice-game/assets/30076041/e7d57335-5886-4d29-b1e6-3fa637943db8)
 
 
 
