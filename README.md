@@ -1,8 +1,10 @@
 # Phone Directory
 It provides api to add, modify, delete, search and retrieval of all contacts. Contact information includes name, phone and email.
 
-<h2> Tech-stack used: </h2>
-<h3> Java-8, REST, Spring-boot framework, JUnit5 framework, MAVEN </h3>
+# Project Architecture Flow:
+
+![image](https://github.com/SanketKutumbe/phone-directory/assets/30076041/f639cee5-317b-4571-a1b4-feb8b75ed45c)
+
 
 <h2> Project Setup </h2>
 For Windows:
@@ -12,8 +14,9 @@ For Windows:
 
 Build project (Windows/Linux):
 1) Execute (in cmd or powershell or Terminal): "mvn clean install" to build package. Executable jar can be found inside target folder. While project building, it will take care of unit tests execution.
-2) Execute: "java -jar phone-directory.jar" in order to start spring application.
-3) Apis can be tested using tools like Postman, with "localhost:8080/contacts"
+2) To start spring application, execute: "java -jar phone-directory.jar"
+3) To run tests, execute: "mvn test -Dtest=ContactControllerTest" 
+4) Apis can be tested using tools like Postman, with "localhost:8080/contacts"
 
 Testing api (E.g postman): (Header field includes content-type as application/json)
 1) Addition of a contact:
