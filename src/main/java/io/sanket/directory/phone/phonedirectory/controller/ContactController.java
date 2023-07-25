@@ -67,7 +67,7 @@ public class ContactController {
         }
         catch (ContactAdditionFailedException cafe) {
             cafe.printStackTrace();
-            jsonResponse.setStatus(400);
+            jsonResponse.setStatus(202);
             jsonResponse.setMessage("User already existing, so it cannot be created once again");
         } catch (Exception e) {
             e.printStackTrace();
@@ -149,6 +149,7 @@ public class ContactController {
             jsonResponse.setMessage("Contact deleted successfully");
         }catch(ContactNotFoundException contactNotFoundException){
             contactNotFoundException.printStackTrace();
+            jsonResponse.setStatus(404);
             jsonResponse.setMessage("Contact not found");
         }
         catch(Exception e){
@@ -190,6 +191,7 @@ public class ContactController {
             jsonResponse.setMessage(result.size() + " contacts found in the phone directory");
         }catch(PhoneDirectoryIsEmptyException phoneDirectoryIsEmptyException){
             phoneDirectoryIsEmptyException.printStackTrace();
+            jsonResponse.setStatus(503);
             jsonResponse.setMessage("Phone directory is empty");
         }
         catch(Exception e){
@@ -232,6 +234,7 @@ public class ContactController {
             jsonResponse.setMessage(contact.size() + " contact(s) found");
         }catch(ContactNotFoundException contactNotFoundException){
             contactNotFoundException.printStackTrace();
+            jsonResponse.setStatus(404);
             jsonResponse.setMessage("Contact not found");
         }
         catch(Exception e){

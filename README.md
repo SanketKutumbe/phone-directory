@@ -5,6 +5,78 @@ It provides api to add, modify, delete, search and retrieval of all contacts. Co
 
 ![](C:\Users\adsan\Downloads\phone-directory.drawio.png)
 
+# Project components:
+
+1) API client (like postman) - Provided details of usage at end.
+2) ContactController involves addContact(), updateContact(), deleteContact(), getAllContacts() and searchContact() methods.
+3) ContactService involves business logic to implement above mentioned methods
+4) ContactRepository is storage layer where contacts are stored
+5) Exception:
+    <table>
+   <tr>
+    <td>Exception</td>
+   <td>Reason</td>
+    </tr>
+   <tr>
+   <td>ContactAdditionFailedException</td>
+   <td>Contact cannot be re-added if it is existing</td>
+   </tr>
+   <tr>
+   <td>ContactNotFoundException</td>
+   <td>Searching non-existing contact</td>
+   </tr>
+   <tr>
+   <td>InsufficientAttributeProvisionException</td>
+   <td>Contact's name and/or phone is empty while adding the contact</td>
+   </tr>
+   <tr>
+   <td>PhoneDirectoryIsEmptyException</td>
+   <td>Retrieval of contacts failed when directory is empty</td>
+   </tr>
+    </table>
+
+6) Contact : It involves Id, name, phoneNumber and email attributes
+7) Others:
+
+    <table>
+    <tr>
+    <td>Status Code</td>
+    <td>Meaning</td>
+    </tr>
+   <tr>
+    <td>200</td>
+    <td>Contact updated successfully</td>
+    </tr>
+   <tr>
+    <td>201</td>
+    <td>Contact added successfully</td>
+    </tr>
+    <tr>
+    <td>202</td>
+    <td>User already existing, so it cannot be created once again</td>
+    </tr>
+    <tr>
+    <td>204</td>
+    <td>Contact deleted successfully</td>
+    </tr>   
+    <tr>
+    <td>400</td>
+    <td>Bad Request. Please provide both, name and phone number</td>
+    </tr>
+    <tr>
+    <td>404</td>
+    <td>Contact not found</td>
+    </tr>
+    <tr>
+    <td>500</td>
+    <td>Internal server error occurred. Please try after sometime.</td>
+    </tr>
+    <tr>
+    <td>503</td>
+    <td>Phone directory is empty</td>
+    </tr>
+   </table>
+
 <h2> Project Setup </h2>
 <h3> For Windows: </h3>
 
