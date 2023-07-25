@@ -1,7 +1,6 @@
 package io.sanket.directory.phone.phonedirectory.entity;
 
 public class Contact {
-
     private int id = -1;
     private String name = null;
     private String phoneNumber = null;

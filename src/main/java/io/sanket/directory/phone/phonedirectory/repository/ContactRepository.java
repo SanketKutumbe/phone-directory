@@ -6,25 +6,25 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 // Its a singleton class
-public class CustomContactRepository {
+public class ContactRepository {
     private static int counter = 1;
-    private static CustomContactRepository customContactRepository = null;
+    private static ContactRepository contactRepository = null;
 
     // maintains list of all contacts
     private List<Contact> list = new ArrayList<>();
 
     // Stores map of contact_id and contact
     private Map<Integer, Contact> map = new LinkedHashMap<>();
-    private CustomContactRepository(){}
+    private ContactRepository(){}
 
     // Retrieves instance of class
-    public static CustomContactRepository getInstance(){
-        if ( customContactRepository == null ){
-            synchronized ( CustomContactRepository.class ){
-                customContactRepository = new CustomContactRepository();
+    public static ContactRepository getInstance(){
+        if ( contactRepository == null ){
+            synchronized ( ContactRepository.class ){
+                contactRepository = new ContactRepository();
             }
         }
-        return customContactRepository;
+        return contactRepository;
     }
 
     // adds contact
