@@ -10,9 +10,10 @@ import io.sanket.directory.phone.phonedirectory.service.ContactService;
 import io.sanket.directory.phone.phonedirectory.service.impl.ContactServiceImpl;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 /*
-        - Add a contact to the directory.
+        -
         - Modify an existing contact.
         - Delete an existing contact.
         - Retrieve all contacts.
@@ -24,6 +25,31 @@ public class ContactController {
 
     private ContactService contactService = new ContactServiceImpl();
 
+    /*
+        Adds contact in a directory.
+        @Params: Contact(name, phoneNumber, email)
+            E.g
+            {
+                "name":"contactOne",
+                "phoneNumber":"11111111111",
+                "email":"contactOne@gmail.com"
+            }
+
+        @Return: JsonResponse
+            E.g
+            {
+                "status": 201,
+                "message": "Contact added successfully",
+                "data": {
+                    "id": 1,
+                    "name": "contactOne",
+                    "phoneNumber": "11111111111",
+                    "email": "contactOne@gmail.com"
+                }
+            }
+
+        @Exception: It fails to add if "name" and/or "phone number"is not provided , exception is thrown and in case when contact details are empty, exception is thrown.
+     */
     @RequestMapping( method = RequestMethod.POST, value = "/contacts")
     public JsonResponse addContact(@RequestBody Contact contact)
     throws ContactAdditionFailedException, InsufficientAttributeProvisionException {
@@ -35,14 +61,13 @@ public class ContactController {
             jsonResponse.setStatus(201);
             jsonResponse.setMessage("Contact added successfully");
         } catch (InsufficientAttributeProvisionException insufficientAttributeProvisionException) {
-
-//            insufficientAttributeProvisionException.printStackTrace();
+            insufficientAttributeProvisionException.printStackTrace();
             jsonResponse.setStatus(400);
             jsonResponse.setMessage("Bad Request. Please provide both, name and phone number");
         }
         catch (ContactAdditionFailedException cafe) {
             cafe.printStackTrace();
-            jsonResponse.setStatus(200);
+            jsonResponse.setStatus(400);
             jsonResponse.setMessage("User already existing, so it cannot be created once again");
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,6 +78,27 @@ public class ContactController {
         }
     }
 
+    /*
+        Update contact in a directory.
+        @Params: Contact(name, phoneNumber, email)***
+            E.g
+            {
+                "phoneNumber":"11111111111"
+            }
+        (Note: Passing few contact details with contact-id is valid.)
+
+        @Return: JsonResponse
+            E.g
+            {
+                "status": 200,
+                "message": "Contact updated successfully.",
+                "data": null
+            }
+        (Note: null value in data doesn't represent failure to update the contact.)
+
+        @Exception: If contact is not existing to update, then in case of creating contact, it fails to add if "name" and/or
+                    "phone number"is not provided, exception is thrown and when contact details are empty, exception is thrown.
+     */
     @RequestMapping( method = RequestMethod.PUT, value = "/contacts/{id}")
     public JsonResponse<Contact> updateContact(@RequestBody Contact contact, @PathVariable String id)
     throws InsufficientAttributeProvisionException{
@@ -78,12 +124,28 @@ public class ContactController {
         }
     }
 
+    /*
+        Delete contact in a directory.
+        @Params: Contact-Id
+
+        @Return: JsonResponse
+            E.g
+            {
+                "status": 204,
+                "message": "Contact deleted successfully",
+                "data": null
+            }
+
+        (Note: null value in data doesn't represent failure to update the contact.)
+
+        @Exception: If contact is not existing to delete or directory is empty, exception is thrown.
+     */
     @RequestMapping( method = RequestMethod.DELETE, value = "/contacts/{id}")
     public JsonResponse<Contact> deleteContact(@PathVariable Integer id){
         JsonResponse<Contact> jsonResponse = new JsonResponse<>();
         try{
             if( !contactService.deleteContact(id) ) throw new ContactNotFoundException();
-            jsonResponse.setStatus(201);
+            jsonResponse.setStatus(204);
             jsonResponse.setMessage("Contact deleted successfully");
         }catch(ContactNotFoundException contactNotFoundException){
             contactNotFoundException.printStackTrace();
@@ -97,6 +159,26 @@ public class ContactController {
 
     }
 
+    /*
+       Get all contacts in a directory.
+
+       @Return: JsonResponse
+           E.g
+            {
+                "status": 200,
+                "message": "1 contacts found in the phone directory",
+                "data": [
+                    {
+                        "id": 1,
+                        "name": "contactOne",
+                        "phoneNumber": "2222222222",
+                        "email": "contactOne@gmail.com"
+                    }
+                ]
+            }
+
+       @Exception: If contact is not existing to delete, exception is thrown.
+    */
     @RequestMapping("/contacts")
     public JsonResponse getAllContacts() {
         JsonResponse<List<Contact>> jsonResponse = new JsonResponse<>();
@@ -117,8 +199,30 @@ public class ContactController {
         }
     }
 
-    @RequestMapping("/contacts/{name}")
-    public JsonResponse searchContact(@PathVariable String name){
+    /*
+       Searching contact(s) in a directory.
+
+       @Params: String
+
+       @Return: JsonResponse
+           E.g
+            {
+                "status": 200,
+                "message": "1 contacts found in the phone directory",
+                "data": [
+                    {
+                        "id": 1,
+                        "name": "contactOne",
+                        "phoneNumber": "2222222222",
+                        "email": "contactOne@gmail.com"
+                    }
+                ]
+            }
+
+       @Exception: If contact is not existing to delete, exception is thrown.
+    */
+    @RequestMapping(method = RequestMethod.GET, value="/contacts/search")
+    public JsonResponse searchContact(@RequestParam("name") String name){
         JsonResponse<List<Contact>> jsonResponse = new JsonResponse<>();
         try {
             List<Contact> contact = contactService.getContact(name);
